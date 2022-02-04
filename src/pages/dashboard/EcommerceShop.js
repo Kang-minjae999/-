@@ -127,6 +127,7 @@ export default function EcommerceShop() {
           sx={{ mb: 2 }}
         >
           <ShopProductSearch />
+          
 
           <Stack direction="row" spacing={1} flexShrink={0} sx={{ my: 1 }}>
             <FormProvider methods={methods}>

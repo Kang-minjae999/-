@@ -8,7 +8,7 @@ import { useForm, Controller } from 'react-hook-form';
 // @mui
 import { LoadingButton } from '@mui/lab';
 import { styled } from '@mui/material/styles';
-import { Grid, Card, Chip, Stack, Button, TextField, Typography, Autocomplete } from '@mui/material';
+import { Grid, Card, Chip, Stack, Button, Typography, Autocomplete } from '@mui/material';
 // routes
 import { PATH_DASHBOARD } from '../../../routes/paths';
 // components
@@ -18,21 +18,21 @@ import BlogNewPostPreview from './BlogNewPostPreview';
 
 // ----------------------------------------------------------------------
 
-const TAGS_OPTION = [
-  'Toy Story 3',
-  'Logan',
-  'Full Metal Jacket',
-  'Dangal',
-  'The Sting',
-  '2001: A Space Odyssey',
-  "Singin' in the Rain",
-  'Toy Story',
-  'Bicycle Thieves',
-  'The Kid',
-  'Inglourious Basterds',
-  'Snatch',
-  '3 Idiots',
+
+const POST_OPTION = [
+  '바이크 소식/기사',
+  '바이크 정보',
+  '바이크 튜닝/정비 정보',
+  '더 추가할 예정',
 ];
+
+const TAGS_OPTION = [
+  '바이크 신차 정보',
+  '바이크 단종차 정보',
+  '바이크 할인',
+  '더 추가할 예정'
+];
+
 
 const LabelStyle = styled(Typography)(({ theme }) => ({
   ...theme.typography.subtitle2,
@@ -59,9 +59,10 @@ export default function BlogNewPostForm() {
 
   const NewBlogSchema = Yup.object().shape({
     title: Yup.string().required('Title is required'),
-    description: Yup.string().required('Description is required'),
-    content: Yup.string().min(1000).required('Content is required'),
+    content: Yup.string().min(10).required('Content is required'),
     cover: Yup.mixed().required('Cover is required'),
+    boardtype: Yup.string().min(1,"게시판 타입을 정해주세요").required('Content is required'),
+    tags: Yup.array().min(1,"주제를 한가지 정해주세요.").required('Content is required'),
   });
 
   const defaultValues = {
@@ -69,12 +70,10 @@ export default function BlogNewPostForm() {
     description: '',
     content: '',
     cover: null,
-    tags: ['Logan'],
+    tags: '[]',
     publish: true,
     comments: true,
-    metaTitle: '',
-    metaDescription: '',
-    metaKeywords: ['Logan'],
+    boardtype: '',
   };
 
   const methods = useForm({
@@ -129,17 +128,13 @@ export default function BlogNewPostForm() {
           <Grid item xs={12} md={8}>
             <Card sx={{ p: 3 }}>
               <Stack spacing={3}>
-                <RHFTextField name="title" label="Post Title" />
-
-                <RHFTextField name="description" label="Description" multiline rows={3} />
-
+                <RHFTextField name="title" label="제목" />
                 <div>
-                  <LabelStyle>Content</LabelStyle>
-                  <RHFEditor name="content" />
+                  <LabelStyle>내용</LabelStyle>
+                  <RHFEditor name="content"/>
                 </div>
-
                 <div>
-                  <LabelStyle>Cover</LabelStyle>
+                  <LabelStyle>대표사진</LabelStyle>
                   <RHFUploadSingleFile name="cover" accept="image/*" maxSize={3145728} onDrop={handleDrop} />
                 </div>
               </Stack>
@@ -152,18 +147,35 @@ export default function BlogNewPostForm() {
                 <div>
                   <RHFSwitch
                     name="publish"
-                    label="Publish"
+                    label="공개여부"
                     labelPlacement="start"
                     sx={{ mb: 1, mx: 0, width: 1, justifyContent: 'space-between' }}
                   />
 
                   <RHFSwitch
                     name="comments"
-                    label="Enable comments"
+                    label="덧글 활성화"
                     labelPlacement="start"
                     sx={{ mx: 0, width: 1, justifyContent: 'space-between' }}
                   />
                 </div>
+
+                <Controller
+                  name="boardtype"
+                  control={control}
+                  render={({ field }) => (
+                    <Autocomplete
+                      onChange={(event, newValue) => field.onChange(newValue)}
+                      options={POST_OPTION.map((option) => option)}
+                      renderTags={(value, getTagProps) =>
+                        value.map((option, index) => (
+                          <Chip {...getTagProps({ index })} key={option} size="small" label={option} />
+                        ))
+                      }
+                      renderInput={(params) => <RHFTextField name="boardtype" label="게시판" {...params} />}
+                    />
+                  )}
+                />
 
                 <Controller
                   name="tags"
@@ -179,42 +191,21 @@ export default function BlogNewPostForm() {
                           <Chip {...getTagProps({ index })} key={option} size="small" label={option} />
                         ))
                       }
-                      renderInput={(params) => <TextField label="Tags" {...params} />}
+                      renderInput={(params) => <RHFTextField name="tags" label="주제" {...params} />}
                     />
                   )}
                 />
 
-                <RHFTextField name="metaTitle" label="Meta title" />
-
-                <RHFTextField name="metaDescription" label="Meta description" fullWidth multiline rows={3} />
-
-                <Controller
-                  name="metaKeywords"
-                  control={control}
-                  render={({ field }) => (
-                    <Autocomplete
-                      multiple
-                      freeSolo
-                      onChange={(event, newValue) => field.onChange(newValue)}
-                      options={TAGS_OPTION.map((option) => option)}
-                      renderTags={(value, getTagProps) =>
-                        value.map((option, index) => (
-                          <Chip {...getTagProps({ index })} key={option} size="small" label={option} />
-                        ))
-                      }
-                      renderInput={(params) => <TextField label="Meta keywords" {...params} />}
-                    />
-                  )}
-                />
+             
               </Stack>
             </Card>
 
             <Stack direction="row" spacing={1.5} sx={{ mt: 3 }}>
               <Button fullWidth color="inherit" variant="outlined" size="large" onClick={handleOpenPreview}>
-                Preview
+                미리보기
               </Button>
               <LoadingButton fullWidth type="submit" variant="contained" size="large" loading={isSubmitting}>
-                Post
+                올리기
               </LoadingButton>
             </Stack>
           </Grid>
@@ -232,3 +223,4 @@ export default function BlogNewPostForm() {
     </>
   );
 }
+

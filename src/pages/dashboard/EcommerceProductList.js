@@ -1,8 +1,10 @@
-import { sentenceCase } from 'change-case';
+import { sentenceCase, paramCase } from 'change-case';
 import { useState, useEffect } from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 // @mui
 import { useTheme } from '@mui/material/styles';
 import {
+  Link,
   Box,
   Card,
   Table,
@@ -58,12 +60,13 @@ export default function EcommerceProductList() {
 
   const { products } = useSelector((state) => state.product);
 
+
   const [productList, setProductList] = useState([]);
   const [page, setPage] = useState(0);
   const [order, setOrder] = useState('asc');
   const [selected, setSelected] = useState([]);
   const [filterName, setFilterName] = useState('');
-  const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [rowsPerPage, setRowsPerPage] = useState(25);
   const [orderBy, setOrderBy] = useState('createdAt');
 
   useEffect(() => {
@@ -87,7 +90,7 @@ export default function EcommerceProductList() {
       const selected = productList.map((n) => n.name);
       setSelected(selected);
       return;
-    }
+  } 
     setSelected([]);
   };
 
@@ -146,7 +149,7 @@ export default function EcommerceProductList() {
             },
             { name: 'Product List' },
           ]}
-        />
+        />          
 
         <Card>
           <ProductListToolbar
@@ -173,6 +176,9 @@ export default function EcommerceProductList() {
                   {filteredProducts.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
                     const { id, name, cover, price, createdAt, inventoryType } = row;
 
+                    
+                    const linkTo = `${PATH_DASHBOARD.usedeCommerce.root}/product/${paramCase(name)}`;
+  
                     const isItemSelected = selected.indexOf(name) !== -1;
 
                     return (
@@ -194,9 +200,11 @@ export default function EcommerceProductList() {
                             src={cover}
                             sx={{ borderRadius: 1.5, width: 64, height: 64, mr: 2 }}
                           />
+                           <Link to={linkTo} color="inherit" component={RouterLink}>
                           <Typography variant="subtitle2" noWrap>
                             {name}
                           </Typography>
+                          </Link>
                         </TableCell>
                         <TableCell style={{ minWidth: 160 }}>{fDate(createdAt)}</TableCell>
                         <TableCell style={{ minWidth: 160 }}>
@@ -241,7 +249,7 @@ export default function EcommerceProductList() {
           </Scrollbar>
 
           <TablePagination
-            rowsPerPageOptions={[5, 10, 25]}
+            rowsPerPageOptions={[25, 50, 100]}
             component="div"
             count={productList.length}
             rowsPerPage={rowsPerPage}

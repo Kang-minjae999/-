@@ -21,9 +21,9 @@ export default function BlogNewPost() {
         <HeaderBreadcrumbs
           heading="Create a new post"
           links={[
-            { name: 'Dashboard', href: PATH_DASHBOARD.root },
-            { name: 'Blog', href: PATH_DASHBOARD.blog.root },
-            { name: 'New Post' },
+            { name: '게시판', href: PATH_DASHBOARD.root },
+            { name: '게시판명', href: PATH_DASHBOARD.blog.root },
+            { name: '글쓰기' },
           ]}
         />
 

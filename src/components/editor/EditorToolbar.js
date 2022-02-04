@@ -80,7 +80,7 @@ export default function EditorToolbar({ id, isSimple, ...other }) {
         <div className="ql-formats">
           {!isSimple && (
             <select className="ql-font" defaultValue="">
-              <option value="">Font</option>
+              <option value="">글씨체</option>
               {FONT_FAMILY.map((font) => (
                 <option key={font} value={font}>
                   {font}
@@ -105,7 +105,7 @@ export default function EditorToolbar({ id, isSimple, ...other }) {
                 {heading}
               </option>
             ))}
-            <option value="">Normal</option>
+            <option value="">normal</option>
           </select>
         </div>
 

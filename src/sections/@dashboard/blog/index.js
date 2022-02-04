@@ -1,4 +1,5 @@
 export { default as BlogNewPostForm } from './BlogNewPostForm';
+export { default as BoardNewPostForm } from './BoardNewPostForm';
 export { default as BlogNewPostPreview } from './BlogNewPostPreview';
 export { default as BlogPostCard } from './BlogPostCard';
 export { default as BlogPostCommentForm } from './BlogPostCommentForm';

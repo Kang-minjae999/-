@@ -10,18 +10,18 @@ import { MotionInView, varFade } from '../../components/animate';
 const CARDS = [
   {
     icon: 'https://minimal-assets-api.vercel.app/assets/icons/ic_design.svg',
-    title: 'UI & UX Design',
+    title: '커뮤니티',
     description:
       'The set is built on the principles of the atomic design system. It helps you to create projects fastest and easily customized packages for your projects.',
   },
   {
     icon: 'https://minimal-assets-api.vercel.app/assets/icons/ic_code.svg',
-    title: 'Development',
+    title: '거래',
     description: 'Easy to customize and extend each component, saving you time and money.',
   },
   {
     icon: '/logo/logo_single.svg',
-    title: 'Branding',
+    title: '서비스',
     description: 'Consistent design in colors, fonts ... makes brand recognition easy.',
   },
 ];
@@ -98,11 +98,11 @@ export default function HomeMinimal() {
         >
           <MotionInView variants={varFade().inUp}>
             <Typography component="div" variant="overline" sx={{ mb: 2, color: 'text.disabled' }}>
-              Minimal
+              라이더 타운
             </Typography>
           </MotionInView>
           <MotionInView variants={varFade().inDown}>
-            <Typography variant="h2">What minimal helps you?</Typography>
+            <Typography variant="h2">라이더 타운은 무엇을 제공하나요?</Typography>
           </MotionInView>
         </Box>
 

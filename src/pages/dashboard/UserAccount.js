@@ -26,45 +26,45 @@ import {
 export default function UserAccount() {
   const { themeStretch } = useSettings();
 
-  const [currentTab, setCurrentTab] = useState('general');
+  const [currentTab, setCurrentTab] = useState('profile');
 
   const ACCOUNT_TABS = [
     {
-      value: 'general',
+      value: 'profile',
       icon: <Iconify icon={'ic:round-account-box'} width={20} height={20} />,
       component: <AccountGeneral />,
     },
     {
-      value: 'billing',
-      icon: <Iconify icon={'ic:round-receipt'} width={20} height={20} />,
-      component: <AccountBilling cards={_userPayment} addressBook={_userAddressBook} invoices={_userInvoices} />,
-    },
-    {
-      value: 'notifications',
-      icon: <Iconify icon={'eva:bell-fill'} width={20} height={20} />,
-      component: <AccountNotifications />,
-    },
-    {
-      value: 'social_links',
+      value: '내 바이크',
       icon: <Iconify icon={'eva:share-fill'} width={20} height={20} />,
       component: <AccountSocialLinks myProfile={_userAbout} />,
     },
     {
-      value: 'change_password',
+      value: '알림',
+      icon: <Iconify icon={'eva:bell-fill'} width={20} height={20} />,
+      component: <AccountNotifications />,
+    },
+    {
+      value: '지불방법',
+      icon: <Iconify icon={'ic:round-receipt'} width={20} height={20} />,
+      component: <AccountBilling cards={_userPayment} addressBook={_userAddressBook} invoices={_userInvoices} />,
+    },
+    {
+      value: '비밀번호 변경',
       icon: <Iconify icon={'ic:round-vpn-key'} width={20} height={20} />,
       component: <AccountChangePassword />,
     },
   ];
 
   return (
-    <Page title="User: Account Settings">
+    <Page title="프로필">
       <Container maxWidth={themeStretch ? false : 'lg'}>
         <HeaderBreadcrumbs
-          heading="Account"
+          heading="프로필"
           links={[
-            { name: 'Dashboard', href: PATH_DASHBOARD.root },
-            { name: 'User', href: PATH_DASHBOARD.user.root },
-            { name: 'Account Settings' },
+            { name: '홈', href: PATH_DASHBOARD.root },
+            { name: '유저', href: PATH_DASHBOARD.user.root },
+            { name: '프로필' },
           ]}
         />
 

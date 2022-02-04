@@ -77,7 +77,7 @@ export default function MainHeader() {
           <Logo />
 
           <Label color="info" sx={{ ml: 1 }}>
-            v3.0.0
+            라이더 타운에 오신것을 환영합니다.
           </Label>
           <Box sx={{ flexGrow: 1 }} />
 

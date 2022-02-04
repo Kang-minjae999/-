@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import orderBy from 'lodash/orderBy';
+import { Link as RouterLink } from 'react-router-dom';
 // form
 import { useForm } from 'react-hook-form';
 // @mui
-import { Container, Typography, Stack } from '@mui/material';
+import { Container, Typography, Stack, Button } from '@mui/material';
 // redux
 import { useDispatch, useSelector } from '../../redux/store';
 import { getProducts, filterProducts } from '../../redux/slices/product';
@@ -15,6 +16,7 @@ import useSettings from '../../hooks/useSettings';
 import Page from '../../components/Page';
 import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs';
 import { FormProvider } from '../../components/hook-form';
+import Iconify from '../../components/Iconify';
 // sections
 import {
   ShopTagFiltered,
@@ -22,7 +24,7 @@ import {
   ShopProductList,
   ShopFilterSidebar,
   ShopProductSearch,
-} from '../../sections/@dashboard/e-commerce/shop';
+} from '../../sections/@dashboard/used-e-commerce/shop';
 import CartWidget from '../../sections/@dashboard/e-commerce/CartWidget';
 
 // ----------------------------------------------------------------------
@@ -105,19 +107,30 @@ export default function EcommerceShop() {
   };
 
   return (
-    <Page title="Ecommerce: Shop">
-      <Container maxWidth={themeStretch ? false : 'lg'}>
-        <HeaderBreadcrumbs
-          heading="Shop"
+    <Page title="중고거래: 바이크">
+     <Container maxWidth={themeStretch ? false : 'lg'}>
+      <HeaderBreadcrumbs
+          heading="중고거래"
           links={[
-            { name: 'Dashboard', href: PATH_DASHBOARD.root },
             {
-              name: 'E-Commerce',
-              href: PATH_DASHBOARD.eCommerce.root,
+              name: '중고거래',
+              href: PATH_DASHBOARD.usedeCommerce.root,
             },
-            { name: 'Shop' },
+            { name: '모토사이클/스쿠터' ,
+              href: PATH_DASHBOARD.usedeCommerce.motocycle,},
           ]}
+          action={
+            <Button
+              variant="contained"
+              component={RouterLink}
+              to={PATH_DASHBOARD.usedeCommerce.newProduct}
+              startIcon={<Iconify icon={'eva:plus-fill'} />}
+            >
+              내 바이크 팔기
+            </Button>
+          }
         />
+
 
         <Stack
           spacing={2}
@@ -126,6 +139,7 @@ export default function EcommerceShop() {
           justifyContent="space-between"
           sx={{ mb: 2 }}
         >
+          
           <ShopProductSearch />
 
           <Stack direction="row" spacing={1} flexShrink={0} sx={{ my: 1 }}>
@@ -163,10 +177,9 @@ export default function EcommerceShop() {
             </>
           )}
         </Stack>
-
         <ShopProductList products={filteredProducts} loading={!products.length && isDefault} />
         <CartWidget />
-      </Container>
+      </Container>     
     </Page>
   );
 }

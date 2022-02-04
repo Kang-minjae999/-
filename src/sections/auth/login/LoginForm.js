@@ -15,9 +15,9 @@ import useIsMountedRef from '../../../hooks/useIsMountedRef';
 // components
 import Iconify from '../../../components/Iconify';
 import { FormProvider, RHFTextField, RHFCheckbox } from '../../../components/hook-form';
-import Naverlogin from './Naverloginimg.png';
-import Kakaologin from './Kakaologinimg.png';
-
+import Naverloginimg from './Naverloginimg.png';
+import Kakaologinimg from './Kakaologinimg.png';
+import Kakaologincallback from './Kakaologincallback';
 
 
 
@@ -66,6 +66,11 @@ export default function LoginForm() {
     }
   };
 
+  const REST_API_KEY = "1e48d31601f5f560eb6da4b6ea35a32b";
+  const REDIRECT_URI = "http://localhost:3000/auth/login";
+  const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+
+
   return (
     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
       <Stack spacing={3}>
@@ -100,12 +105,12 @@ export default function LoginForm() {
         로그인
       </LoadingButton>
       <br/><br/>
-
       <div style={{ display: 'flex', flexDirection: 'row' }}>
-      <a href='https://kakao.com' target='_blank' rel='noopener noreferrer'><img style={{height:'45px',width:'250px'}} src={Kakaologin} alt='Naverloginimg'/></a>
+      <a href={KAKAO_AUTH_URL} target='_blank' rel='noopener noreferrer'><img style={{height:'45px',width:'250px'}} src={Kakaologinimg} alt='Naverloginimg'/></a>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
-      <a href='https://naver.com' target='_blank' rel='noopener noreferrer'><img style={{height:'45px',width:'250px'}} src={Naverlogin} alt='Naverloginimg'/></a>
+      <a href='https://naver.com' target='_blank' rel='noopener noreferrer'><img style={{height:'45px',width:'250px'}} src={Naverloginimg} alt='Naverloginimg'/></a>
       </div >
+      <Kakaologincallback />
     </FormProvider>
   );
 }

@@ -118,7 +118,7 @@ export default function Settings() {
               <Scrollbar sx={{ flexGrow: 1 }}>
                 <Stack spacing={3} sx={{ p: 3 }}>
                   <Stack spacing={1.5}>
-                    <Typography variant="subtitle2">흑백</Typography>
+                    <Typography variant="subtitle2">야간모드</Typography>
                     <SettingMode />
                   </Stack>
 

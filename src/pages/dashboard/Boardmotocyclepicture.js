@@ -80,14 +80,14 @@ export default function BlogPosts() {
         <HeaderBreadcrumbs
           heading="사진"
           links={[
-            { name: '게시판', href: PATH_DASHBOARD.board.motocycle },
+            { name: '게시판', href: PATH_DASHBOARD.board.motocyclepicture },
             { name: '사진' },
           ]}
           action={
             <Button
               variant="contained"
               component={RouterLink}
-              to={PATH_DASHBOARD.blog.newPost}
+              to={PATH_DASHBOARD.board.newPostmotocyclepicture}
               startIcon={<Iconify icon={'eva:plus-fill'} />}
             >
               글쓰기

@@ -3,7 +3,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import { alpha, useTheme, styled } from '@mui/material/styles';
 import { Box, Grid, Button, Container, Typography } from '@mui/material';
 // routes
-import { PATH_PAGE } from '../../routes/paths';
+import { PATH_DASHBOARD } from '../../routes/paths';
 // components
 import Image from '../../components/Image';
 import { MotionInView, varFade } from '../../components/animate';
@@ -85,14 +85,14 @@ export default function HomeHugePackElements() {
             <ContentStyle>
               <MotionInView variants={varFade().inUp}>
                 <Typography component="div" variant="overline" sx={{ mb: 2, color: 'text.disabled' }}>
-                  Interface Starter Kit
+                  라이딩을 도와주는 기능들
                 </Typography>
               </MotionInView>
 
               <MotionInView variants={varFade().inUp}>
                 <Typography variant="h2" sx={{ mb: 3 }}>
-                  Huge pack <br />
-                  of elements
+                  ABOUT <br />
+                  RIDER TOWN
                 </Typography>
               </MotionInView>
 
@@ -103,7 +103,7 @@ export default function HomeHugePackElements() {
                     color: isLight ? 'text.secondary' : 'common.white',
                   }}
                 >
-                  We collected most popular elements. Menu, sliders, buttons, inputs etc. are all here. Just dive in!
+                  라이딩, 정비, 거래, 커뮤니티 모든 것을 제공합니다.
                 </Typography>
               </MotionInView>
 
@@ -113,9 +113,9 @@ export default function HomeHugePackElements() {
                   color="inherit"
                   variant="outlined"
                   component={RouterLink}
-                  to={PATH_PAGE.components}
+                  to={PATH_DASHBOARD.general.app}
                 >
-                  View All Components
+                  시작하기
                 </Button>
               </MotionInView>
             </ContentStyle>

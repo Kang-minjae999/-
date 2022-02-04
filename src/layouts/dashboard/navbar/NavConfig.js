@@ -32,7 +32,7 @@ const navConfig = [
     items: [ 
       { title: '나의 라이딩', path: PATH_DASHBOARD.general.app, icon: ICONS.dashboard },
       { title: '나의 프로필', path: PATH_DASHBOARD.user.profile ,icon: ICONS.user },
-      { title: '나의 동호회 - 새로 제작 예정', path: PATH_DASHBOARD.board.motocycle ,icon: ICONS.chat },
+      { title: '나의 동호회 - 새로 제작 예정', path: PATH_DASHBOARD.club.root ,icon: ICONS.chat },
       { title: '나의 주문', path: PATH_DASHBOARD.eCommerce.checkout ,icon: ICONS.ecommerce },
     ],
   },
@@ -50,16 +50,17 @@ const navConfig = [
     items: [
       // MANAGEMENT : USER
       {
-        title: '동호회 - 새로 제작',
-        path: PATH_DASHBOARD.user.root,
-        icon: ICONS.user,
+        title: '동호회',
+        path: PATH_DASHBOARD.club.root,
+        icon: ICONS.cart,
         children: [
-          { title: '나의 프로필', path: PATH_DASHBOARD.user.profile },
-          { title: '카드', path: PATH_DASHBOARD.user.cards },
-          { title: '리스트', path: PATH_DASHBOARD.user.list },
-          { title: '등록', path: PATH_DASHBOARD.user.newUser },
-          { title: '수정', path: PATH_DASHBOARD.user.editById },
-          { title: '계정', path: PATH_DASHBOARD.user.account },
+          { title: '동호회', path: PATH_DASHBOARD.club.club },
+          { title: '동호회 상세정보', path: PATH_DASHBOARD.club.productById },
+          { title: '동호회 리스트', path: PATH_DASHBOARD.club.list },
+          { title: '동호회 만들기', path: PATH_DASHBOARD.club.newProduct },
+          { title: '동호회 수정하기', path: PATH_DASHBOARD.club.editById },
+          { title: '동호회 체크아웃', path: PATH_DASHBOARD.club.checkout },
+          { title: '동호회 인보이스', path: PATH_DASHBOARD.club.invoice },
         ],
       },
       {

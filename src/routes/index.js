@@ -48,6 +48,7 @@ export default function Router() {
             </GuestGuard>
           ),
         },
+        { path: 'kakaologin/callback', element: <Kakaologincallback /> },      
         { path: 'login-unprotected', element: <Login /> },
         { path: 'register-unprotected', element: <Register /> },
         { path: 'reset-password', element: <ResetPassword /> },
@@ -98,7 +99,9 @@ export default function Router() {
             { path: 'motocycleparts', element: <UEmotocycleparts /> },
             { path: 'product/:name', element: <EcommerceProductDetails /> },
             { path: 'list', element: <EcommerceProductList /> },
-            { path: 'product/new', element: <EcommerceProductCreate /> },
+            { path: 'product/new', element: <UEcommerceProductCreate /> },
+            { path: 'product/newgear', element: <UEcommerceProductCreategear /> },
+            { path: 'product/newparts', element: <UEcommerceProductCreateparts /> },
             { path: 'product/:name/edit', element: <EcommerceProductCreate /> },
             { path: 'checkout', element: <EcommerceCheckout /> },
             { path: 'invoice', element: <EcommerceInvoice /> },
@@ -120,9 +123,9 @@ export default function Router() {
           path: 'blog',
           children: [
             { element: <Navigate to="/dashboard/blog/posts" replace />, index: true },
-            { path: 'Motocycle', element: <PostMotocycle /> },            
-            { path: 'Motocycleparts', element: <PostMotocycleparts /> },           
-            { path: 'Motocyclearticle', element: <PostMotocyclearticle /> },            
+            { path: 'Motocycle', element: <BlogMotocycle /> },            
+            { path: 'Motocycleparts', element: <BlogMotocycleparts /> },           
+            { path: 'Motocyclearticle', element: <BlogMotocyclearticle /> },            
             { path: 'posts', element: <BlogPosts /> },
             { path: 'post/:title', element: <BlogPost /> },
             { path: 'new-post', element: <BlogNewPost /> },
@@ -136,8 +139,25 @@ export default function Router() {
             { path: 'motocyclefix', element: <BoardMotocyclefix /> },            
             { path: 'motocyclepicture', element: <BoardMotocyclepicture /> },            
             { path: 'free', element: <Boardfree /> },
+            { path: 'new-post', element: <BlogNewPost /> },
+            { path: 'Newpostmotocycle', element: <NewpostBoardmotocycle /> },
+            { path: 'NewpostMotocyclefix', element: <NewpostBoardMotocyclefix /> },
+            { path: 'NewpostMotocyclepicture', element: <NewpostBoardMotocyclepicture /> },
+          ],
+        },         {
+          path: 'club',
+          children: [
+            { element: <Navigate to="/dashboard/club/club" replace />, index: true },
+            { path: 'club', element: <Club /> },            
+            { path: 'product/:name', element: <ClubDetails /> },
+            { path: 'list', element: <ClubList /> },
+            { path: 'product/new', element: <ClubCreate /> },
+            { path: 'product/:name/edit', element: <ClubCreate /> },
+            { path: 'checkout', element: <ClubCheckout /> },
+            { path: 'invoice', element: <ClubInvoice /> },
           ],
         },
+        
         {
           path: 'mail',
           children: [
@@ -193,6 +213,7 @@ export default function Router() {
 
 // Authentication
 const Login = Loadable(lazy(() => import('../pages/auth/Login')));
+const Kakaologincallback = Loadable(lazy(() => import('../pages/auth/Kakaologincallback')));
 const Register = Loadable(lazy(() => import('../pages/auth/Register')));
 const ResetPassword = Loadable(lazy(() => import('../pages/auth/ResetPassword')));
 const VerifyCode = Loadable(lazy(() => import('../pages/auth/VerifyCode')));
@@ -207,25 +228,44 @@ const EcommerceShop = Loadable(lazy(() => import('../pages/dashboard/EcommerceSh
 const Emotocycle = Loadable(lazy(() => import('../pages/dashboard/Emotocycle')));
 const Emotocyclegear = Loadable(lazy(() => import('../pages/dashboard/Emotocyclegear')));
 const Emotocycleparts = Loadable(lazy(() => import('../pages/dashboard/Emotocycleparts')));
-// 중고거래
-const UEmotocycle = Loadable(lazy(() => import('../pages/dashboard/UEmotocycle')));
-const UEmotocyclegear = Loadable(lazy(() => import('../pages/dashboard/UEmotocyclegear')));
-const UEmotocycleparts = Loadable(lazy(() => import('../pages/dashboard/UEmotocycleparts')));
 const EcommerceProductDetails = Loadable(lazy(() => import('../pages/dashboard/EcommerceProductDetails')));
 const EcommerceProductList = Loadable(lazy(() => import('../pages/dashboard/EcommerceProductList')));
 const EcommerceProductCreate = Loadable(lazy(() => import('../pages/dashboard/EcommerceProductCreate')));
 const EcommerceCheckout = Loadable(lazy(() => import('../pages/dashboard/EcommerceCheckout')));
 const EcommerceInvoice = Loadable(lazy(() => import('../pages/dashboard/EcommerceInvoice')));
-const BlogPosts = Loadable(lazy(() => import('../pages/dashboard/BlogPosts')));
+// 동호회
+const Club = Loadable(lazy(() => import('../pages/dashboard/Club')));
+const ClubDetails = Loadable(lazy(() => import('../pages/dashboard/ClubDetails')));
+const ClubList = Loadable(lazy(() => import('../pages/dashboard/ClubList')));
+const ClubCreate = Loadable(lazy(() => import('../pages/dashboard/ClubCreate')));
+const ClubCheckout = Loadable(lazy(() => import('../pages/dashboard/ClubCheckout')));
+const ClubInvoice = Loadable(lazy(() => import('../pages/dashboard/ClubInvoice')));
+
+// 중고거래
+const UEmotocycle = Loadable(lazy(() => import('../pages/dashboard/UEmotocycle')));
+const UEmotocyclegear = Loadable(lazy(() => import('../pages/dashboard/UEmotocyclegear')));
+const UEmotocycleparts = Loadable(lazy(() => import('../pages/dashboard/UEmotocycleparts')));
+const UEcommerceProductCreate = Loadable(lazy(() => import('../pages/dashboard/UEcommerceProductCreate')));
+const UEcommerceProductCreategear = Loadable(lazy(() => import('../pages/dashboard/UEcommerceProductCreategear')));
+const UEcommerceProductCreateparts = Loadable(lazy(() => import('../pages/dashboard/UEcommerceProductCreateparts')));
+
+
 // 모토사이클 게시글
 const BoardMotocycle = Loadable(lazy(() => import('../pages/dashboard/Boardmotocycle')));
 const BoardMotocyclefix = Loadable(lazy(() => import('../pages/dashboard/Boardmotocyclefix')));
 const BoardMotocyclepicture = Loadable(lazy(() => import('../pages/dashboard/Boardmotocyclepicture')));
 const Boardfree = Loadable(lazy(() => import('../pages/dashboard/Boardfree')));
+const NewpostBoardmotocycle = Loadable(lazy(() => import('../pages/dashboard/NewpostBoardmotocycle')));
+const NewpostBoardMotocyclefix = Loadable(lazy(() => import('../pages/dashboard/NewpostBoardmotocyclefix')));
+const NewpostBoardMotocyclepicture = Loadable(lazy(() => import('../pages/dashboard/NewpostBoardmotocyclepicture')));
+
+
+
 // 읽기전용 게시글
-const PostMotocycle = Loadable(lazy(() => import('../pages/dashboard/Adminmotocycle')));
-const PostMotocycleparts = Loadable(lazy(() => import('../pages/dashboard/Adminmotocycleparts')));
-const PostMotocyclearticle = Loadable(lazy(() => import('../pages/dashboard/Adminmotocyclearticle')));
+const BlogPosts = Loadable(lazy(() => import('../pages/dashboard/BlogPosts')));
+const BlogMotocycle = Loadable(lazy(() => import('../pages/dashboard/Blogmotocycle')));
+const BlogMotocycleparts = Loadable(lazy(() => import('../pages/dashboard/Blogmotocycleparts')));
+const BlogMotocyclearticle = Loadable(lazy(() => import('../pages/dashboard/Blogmotocyclearticle')));
 const BlogPost = Loadable(lazy(() => import('../pages/dashboard/BlogPost')));
 const BlogNewPost = Loadable(lazy(() => import('../pages/dashboard/BlogNewPost')));
 const UserProfile = Loadable(lazy(() => import('../pages/dashboard/UserProfile')));

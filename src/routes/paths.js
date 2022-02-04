@@ -12,6 +12,7 @@ const ROOTS_DASHBOARD = '/dashboard';
 export const PATH_AUTH = {
   root: ROOTS_AUTH,
   login: path(ROOTS_AUTH, '/login'),
+  Kakaologincallback: path(ROOTS_AUTH, '/kakaologin/callback'),
   loginUnprotected: path(ROOTS_AUTH, '/login-unprotected'),
   register: path(ROOTS_AUTH, '/register'),
   registerUnprotected: path(ROOTS_AUTH, '/register-unprotected'),
@@ -85,6 +86,8 @@ export const PATH_DASHBOARD = {
     productById: path(ROOTS_DASHBOARD, '/used-e-commerce/product/nike-air-force-1-ndestrukt'),
     list: path(ROOTS_DASHBOARD, '/used-e-commerce/list'),
     newProduct: path(ROOTS_DASHBOARD, '/used-e-commerce/product/new'),
+    newProductgear: path(ROOTS_DASHBOARD, '/used-e-commerce/product/newgear'),
+    newProductparts: path(ROOTS_DASHBOARD, '/used-e-commerce/product/newparts'),
     editById: path(ROOTS_DASHBOARD, '/used-e-commerce/product/nike-blazer-low-77-vintage/edit'),
     checkout: path(ROOTS_DASHBOARD, 'used-e-commerce/checkout'),
     invoice: path(ROOTS_DASHBOARD, '/used-e-commerce/invoice')
@@ -99,6 +102,18 @@ export const PATH_DASHBOARD = {
     postById: path(ROOTS_DASHBOARD, '/blog/post/apply-these-7-secret-techniques-to-improve-event'),
     newPost: path(ROOTS_DASHBOARD, '/blog/new-post')
   },
+  club: {
+    root: path(ROOTS_DASHBOARD, '/club'),
+    club: path(ROOTS_DASHBOARD, '/club/club'),    
+    product: path(ROOTS_DASHBOARD, '/club/product/:name'),
+    productById: path(ROOTS_DASHBOARD, '/club/product/nike-air-force-1-ndestrukt'),
+    list: path(ROOTS_DASHBOARD, '/club/list'),
+    newProduct: path(ROOTS_DASHBOARD, '/club/product/new'),
+    editById: path(ROOTS_DASHBOARD, '/club/product/nike-blazer-low-77-vintage/edit'),
+    checkout: path(ROOTS_DASHBOARD, '/club/checkout'),
+    invoice: path(ROOTS_DASHBOARD, '/club/invoice')
+  },
+  
   board: {
     root: path(ROOTS_DASHBOARD, '/board'),
     posts: path(ROOTS_DASHBOARD, '/board/posts'),
@@ -108,7 +123,10 @@ export const PATH_DASHBOARD = {
     free: path(ROOTS_DASHBOARD, '/board/free'),
     post: path(ROOTS_DASHBOARD, '/board/post/:title'),
     postById: path(ROOTS_DASHBOARD, '/board/post/apply-these-7-secret-techniques-to-improve-event'),
-    newPost: path(ROOTS_DASHBOARD, '/board/new-post')
+    newPost: path(ROOTS_DASHBOARD, '/board/new-post'),
+    newPostmotocycle: path(ROOTS_DASHBOARD, '/board/newPostmotocycle'),
+    newPostmotocyclefix: path(ROOTS_DASHBOARD, '/board/newPostmotocyclefix'),
+    newPostmotocyclepicture: path(ROOTS_DASHBOARD, '/board/newPostmotocyclefix'),
   }
 };
 

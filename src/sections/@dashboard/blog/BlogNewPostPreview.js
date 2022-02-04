@@ -35,11 +35,11 @@ export default function BlogNewPostPreview({ values, isValid, isSubmitting, isOp
     <DialogAnimate fullScreen open={isOpen} onClose={onClose}>
       <DialogActions sx={{ py: 2, px: 3 }}>
         <Typography variant="subtitle1" sx={{ flexGrow: 1 }}>
-          Preview Post
+          미리보기
         </Typography>
-        <Button onClick={onClose}>Cancel</Button>
+        <Button onClick={onClose}>돌아가기</Button>
         <LoadingButton type="submit" variant="contained" disabled={!isValid} loading={isSubmitting} onClick={onSubmit}>
-          Post
+          올리기
         </LoadingButton>
       </DialogActions>
 
@@ -56,7 +56,7 @@ export default function BlogNewPostPreview({ values, isValid, isSubmitting, isOp
           </Container>
         </Scrollbar>
       ) : (
-        <EmptyContent title="Empty content" />
+        <EmptyContent title="아무것도 적지 않으셨어요." />
       )}
     </DialogAnimate>
   );

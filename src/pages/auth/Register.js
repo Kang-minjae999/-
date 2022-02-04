@@ -2,7 +2,7 @@ import { capitalCase } from 'change-case';
 import { Link as RouterLink } from 'react-router-dom';
 // @mui
 import { styled } from '@mui/material/styles';
-import { Box, Card, Link, Container, Typography, Tooltip } from '@mui/material';
+import { Box, Link, Container, Typography, Tooltip } from '@mui/material';
 // hooks
 import useAuth from '../../hooks/useAuth';
 import useResponsive from '../../hooks/useResponsive';
@@ -14,6 +14,7 @@ import Logo from '../../components/Logo';
 import Image from '../../components/Image';
 // sections
 import { RegisterForm } from '../../sections/auth/register';
+import bikehelmet  from './bikehelmet.png';
 
 // ----------------------------------------------------------------------
 
@@ -39,14 +40,6 @@ const HeaderStyle = styled('header')(({ theme }) => ({
   },
 }));
 
-const SectionStyle = styled(Card)(({ theme }) => ({
-  width: '100%',
-  maxWidth: 464,
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'center',
-  margin: theme.spacing(2, 0, 2, 2),
-}));
 
 const ContentStyle = styled('div')(({ theme }) => ({
   maxWidth: 480,
@@ -64,7 +57,6 @@ export default function Register() {
   const { method } = useAuth();
 
   const smUp = useResponsive('up', 'sm');
-  const mdUp = useResponsive('up', 'md');
 
   return (
     <Page title="Register">
@@ -81,17 +73,6 @@ export default function Register() {
           )}
         </HeaderStyle>
 
-        {mdUp && (
-          <SectionStyle>
-            <Typography variant="h3" sx={{ px: 5, mt: 10, mb: 5 }}>
-              라이더타운과 함께 <br/>라이딩에 빠져보아요.
-            </Typography>
-            <Image
-              alt="register"
-              src="http://www.ridemag.co.kr/news/photo/201911/14159_88631_5447.jpg"
-            />
-          </SectionStyle>
-        )}
 
         <Container>
           <ContentStyle>
@@ -106,8 +87,8 @@ export default function Register() {
                 <>
                   <Image
                     disabledEffect
-                    src={`https://minimal-assets-api.vercel.app/assets/icons/auth/ic_${method}.png`}
-                    sx={{ width: 32, height: 32 }}
+                    src={bikehelmet}
+                    sx={{ width: 40, height: 40 }}
                   />
                 </>
               </Tooltip>
@@ -129,3 +110,33 @@ export default function Register() {
     </Page>
   );
 }
+
+
+/*  \
+
+const SectionStyle = styled(Card)(({ theme }) => ({
+  width: '100%',
+  maxWidth: 464,
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  margin: theme.spacing(2, 0, 2, 2),
+}));
+
+
+  const mdUp = useResponsive('up', 'md');
+
+
+
+{mdUp && (
+          <SectionStyle>
+            <Typography variant="h3" sx={{ px: 5, mt: 10, mb: 5 }}>
+              라이더타운과 함께 <br/>라이딩에 빠져보아요.
+            </Typography>
+            <Image
+              alt="register"
+              src="http://www.ridemag.co.kr/news/photo/201911/14159_88631_5447.jpg"
+            />
+          </SectionStyle>
+        )}
+*/ 

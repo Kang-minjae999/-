@@ -2,7 +2,7 @@ import { capitalCase } from 'change-case';
 import { Link as RouterLink } from 'react-router-dom';
 // @mui
 import { styled } from '@mui/material/styles';
-import { Box, Card, Stack, Link, Alert, Tooltip, Container, Typography } from '@mui/material';
+import { Box, Stack, Link, Alert, Tooltip, Container, Typography } from '@mui/material';
 // routes
 import { PATH_AUTH } from '../../routes/paths';
 // hooks
@@ -14,6 +14,8 @@ import Logo from '../../components/Logo';
 import Image from '../../components/Image';
 // sections
 import { LoginForm } from '../../sections/auth/login';
+import bikehelmet  from './bikehelmet.png';
+
 
 // ----------------------------------------------------------------------
 
@@ -39,15 +41,6 @@ const HeaderStyle = styled('header')(({ theme }) => ({
   },
 }));
 
-const SectionStyle = styled(Card)(({ theme }) => ({
-  width: '100%',
-  maxWidth: 464,
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'center',
-  margin: theme.spacing(2, 0, 2, 2),
-}));
-
 const ContentStyle = styled('div')(({ theme }) => ({
   maxWidth: 480,
   margin: 'auto',
@@ -65,7 +58,7 @@ export default function Login() {
 
   const smUp = useResponsive('up', 'sm');
 
-  const mdUp = useResponsive('up', 'md');
+
 
   return (
     <Page title="Login">
@@ -82,17 +75,7 @@ export default function Login() {
           )}
         </HeaderStyle>
 
-        {mdUp && (
-          <SectionStyle>
-            <Typography variant="h3" sx={{ px: 5, mt: 10, mb: 5 }}>
-              라이더 타운에 <br/> 오신것을 환영합니다.
-            </Typography>
-            <Image
-              alt="login"
-              src="http://www.ridemag.co.kr/news/photo/201911/14159_88631_5447.jpg"
-            />
-          </SectionStyle>
-        )}
+
 
         <Container maxWidth="sm">
           <ContentStyle>
@@ -108,8 +91,8 @@ export default function Login() {
                 <>
                   <Image
                     disabledEffect
-                    src={`https://minimal-assets-api.vercel.app/assets/icons/auth/ic_${method}.png`}
-                    sx={{ width: 32, height: 32 }}
+                    src={bikehelmet}
+                    sx={{ width: 40, height: 40 }}
                   />
                 </>
               </Tooltip>
@@ -133,3 +116,32 @@ export default function Login() {
     </Page>
   );
 }
+
+/*        
+const SectionStyle = styled(Card)(({ theme }) => ({
+  width: '100%',
+  maxWidth: 464,
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  margin: theme.spacing(2, 0, 2, 2),
+}));
+
+  const mdUp = useResponsive('up', 'md');
+
+
+
+
+
+{mdUp && (
+          <SectionStyle>
+            <Typography variant="h3" sx={{ px: 5, mt: 10, mb: 5 }}>
+              Rider Town
+            </Typography>
+            <Image
+              alt="login"
+              src="http://www.ridemag.co.kr/news/photo/201911/14159_88631_5447.jpg"
+            />
+          </SectionStyle>
+        )}
+ */

@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import orderBy from 'lodash/orderBy';
+import { Link as RouterLink } from 'react-router-dom';
 // form
 import { useForm } from 'react-hook-form';
 // @mui
-import { Container, Typography, Stack } from '@mui/material';
+import { Container, Typography, Stack, Button } from '@mui/material';
 // redux
 import { useDispatch, useSelector } from '../../redux/store';
 import { getProducts, filterProducts } from '../../redux/slices/product';
@@ -24,6 +25,7 @@ import {
   ShopProductSearch,
 } from '../../sections/@dashboard/e-commerce/shop';
 import CartWidget from '../../sections/@dashboard/e-commerce/CartWidget';
+import Iconify from '../../components/Iconify';
 
 // ----------------------------------------------------------------------
 
@@ -105,18 +107,28 @@ export default function EcommerceShop() {
   };
 
   return (
-    <Page title="Ecommerce: Shop">
+    <Page title="중고거래: 부품/용품">
       <Container maxWidth={themeStretch ? false : 'lg'}>
-        <HeaderBreadcrumbs
-          heading="Shop"
+      <HeaderBreadcrumbs
+          heading="중고거래"
           links={[
-            { name: 'Dashboard', href: PATH_DASHBOARD.root },
             {
-              name: 'E-Commerce',
-              href: PATH_DASHBOARD.eCommerce.root,
+              name: '중고거래',
+              href: PATH_DASHBOARD.usedeCommerce.root,
             },
-            { name: 'Shop' },
+            { name: '부품/튜닝용품' ,
+              href: PATH_DASHBOARD.usedeCommerce.motocycleparts,},
           ]}
+          action={
+            <Button
+              variant="contained"
+              component={RouterLink}
+              to={PATH_DASHBOARD.usedeCommerce.newProductparts}
+              startIcon={<Iconify icon={'eva:plus-fill'} />}
+            >
+              내 부품/튜닝용품 팔기
+            </Button>
+          }
         />
 
         <Stack

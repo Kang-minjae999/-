@@ -18,19 +18,19 @@ export default function BlockContent() {
 
       <Box sx={{ p: 3 }}>
         <Typography gutterBottom variant="h5">
-          Drop or Select file
+          파일을 올려주세요.
         </Typography>
 
         <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-          Drop files here or click&nbsp;
+          여기에 파일을 끌어오거나 &nbsp;
           <Typography
             variant="body2"
             component="span"
             sx={{ color: 'primary.main', textDecoration: 'underline' }}
           >
-            browse
+            클릭
           </Typography>
-          &nbsp;thorough your machine
+          해 주세요.
         </Typography>
       </Box>
     </Stack>

@@ -88,7 +88,7 @@ export default function Editor({
           onChange={onChange}
           modules={modules}
           formats={formats}
-          placeholder="Write something awesome..."
+          placeholder="내용을 적어주세요."
           {...other}
         />
       </RootStyle>

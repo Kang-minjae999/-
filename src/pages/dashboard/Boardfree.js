@@ -87,7 +87,7 @@ export default function BlogPosts() {
             <Button
               variant="contained"
               component={RouterLink}
-              to={PATH_DASHBOARD.blog.newPost}
+              to={PATH_DASHBOARD.board.newPost}
               startIcon={<Iconify icon={'eva:plus-fill'} />}
             >
               글쓰기

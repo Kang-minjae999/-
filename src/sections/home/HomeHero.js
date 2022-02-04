@@ -85,19 +85,17 @@ export default function HomeHero() {
         <Container>
           <ContentStyle>
             <m.div variants={varFade().inRight}>
-              <Typography variant="h1" sx={{ color: 'common.white' }}>
-                페이지 <br />
-                삭제할 <br /> 
-                <Typography component="span" variant="h1" sx={{ color: 'primary.main' }}>
-                  &nbsp;예정
+              <Typography variant="h1" sx={{ color: 'primary.main' }}>
+                RIDER TOWN <br />
+                <Typography component="span" variant="h1" sx={{ color: 'common.white' }}>
+                  &nbsp;라이더 타운
                 </Typography>
               </Typography>
             </m.div>
 
             <m.div variants={varFade().inRight}>
               <Typography sx={{ color: 'common.white' }}>
-                The starting point for your next project based on easy-to-customize MUI helps you build apps faster and
-                better.
+                라이더 타운에 오신것을 환영합니다.
               </Typography>
             </m.div>
 
@@ -119,7 +117,7 @@ export default function HomeHero() {
                       color="common.white"
                       sx={{ typography: 'body2' }}
                     >
-                      Preview Sketch
+                      흠좀무
                     </Link>
                   }
                 />
@@ -142,7 +140,7 @@ export default function HomeHero() {
                       color="common.white"
                       sx={{ typography: 'body2' }}
                     >
-                      Preview Figma
+                      흠좀무
                     </Link>
                   }
                 />
@@ -157,14 +155,14 @@ export default function HomeHero() {
                 to={PATH_DASHBOARD.root}
                 startIcon={<Iconify icon={'eva:flash-fill'} width={20} height={20} />}
               >
-                Live Preview
+                시작하기
               </Button>
             </m.div>
 
             <Stack spacing={2.5}>
               <m.div variants={varFade().inRight}>
                 <Typography variant="overline" sx={{ color: 'primary.light' }}>
-                  Available For
+                  여기다가 뭐넣지
                 </Typography>
               </m.div>
 
